@@ -1,5 +1,6 @@
 import './App.css'
 import Navbar from './components/Navbar'
+import TitleSection from './components/TitleSection'
 
 function App() {
   
@@ -10,6 +11,11 @@ function App() {
       <Navbar></Navbar>
  
     </header>
+    
+      <TitleSection>
+        Kitchen Room
+      </TitleSection>
+   
     
       
     </>
