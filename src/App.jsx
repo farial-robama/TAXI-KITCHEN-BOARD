@@ -1,9 +1,15 @@
+
+import { Suspense } from 'react';
 import './App.css'
 import Navbar from './components/Navbar'
+import OrderContainer from './components/OrderContainer'
 import TitleSection from './components/TitleSection'
 
+const loadOrders = () => fetch("/orders.json").then((res) => res.json());
+
 function App() {
-  
+
+  const ordersPromise = loadOrders();
 
   return (
     <>
@@ -11,13 +17,18 @@ function App() {
       <Navbar></Navbar>
  
     </header>
-    
+
+    <section>
       <TitleSection>
         Kitchen Room
       </TitleSection>
-   
-    
-      
+    </section>
+    <section>
+      <Suspense fallback={"LOADING...."}>
+        <OrderContainer ordersPromise={ordersPromise}></OrderContainer>
+      </Suspense>
+    </section>
+       
     </>
   )
 }
