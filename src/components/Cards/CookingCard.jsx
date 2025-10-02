@@ -1,4 +1,4 @@
-const CookingCard = ({cookingItem}) => {
+const CookingCard = ({cookingItem, handleCooking}) => {
   
   return (
     <div
@@ -23,7 +23,7 @@ const CookingCard = ({cookingItem}) => {
       </p>
 
       {/* Static Button */}
-      <button className="px-6 mt-3 py-1 shadow text-sm hover:bg-black hover:text-white bg-white cursor-pointer rounded-xl">
+      <button onClick={()=> handleCooking(cookingItem)} className="px-6 mt-3 py-1 shadow text-sm hover:bg-black hover:text-white bg-white cursor-pointer rounded-xl">
         Cooked?
       </button>
     </div>
