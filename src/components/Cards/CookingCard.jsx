@@ -4,7 +4,7 @@ const CookingCard = ({cookingItem}) => {
     <div
       className="rounded-xl p-5 shadow hover:shadow-lg"
       style={{
-        background: "linear-gradient(#ffffff90, #FCB700), url('/cook-bg.gif')",
+        background: "linear-gradient(#ffffff80, #FCB700), url('/cook-bg.gif')",
       }}
     >
       {/* Title */}

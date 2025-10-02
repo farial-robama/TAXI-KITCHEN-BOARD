@@ -11,10 +11,16 @@ const OrderContainer = ({ordersPromise}) => {
     const handleOrder = (order) => {
         console.log(order);
 
+
+    const isExist = cookingItems.find((item) => item.id === order.id);
+    if (isExist) {
+        alert("Already Cooking!!")
+        return;
+    }
+
     const newCookingItems = [...cookingItems,order]
     setCookingItems(newCookingItems);
-        
-
+    
     }
 
     return (
