@@ -3,18 +3,19 @@ import States from './States';
 import OrderCard from './Cards/OrderCard';
 import CookingCard from './Cards/CookingCard';
 import ServeCard from './Cards/ServeCard';
+import { toast } from 'react-toastify';
 
 const OrderContainer = ({ordersPromise}) => {
-    const orders = use(ordersPromise)
+    const data = use(ordersPromise)
+    const [orders, setOrders] = useState(data)
 
     const [cookingItems, setCookingItems] =useState([])
     const [readyItems, setReadyItems] =useState([])
 
     const handleOrder = (order) => {
-
     const isExist = cookingItems.find((item) => item.id === order.id);
     if (isExist) {
-        alert("Already Cooking!!")
+        toast.error("Already Cooking!!")
         return;
     }
 
@@ -24,11 +25,16 @@ const OrderContainer = ({ordersPromise}) => {
     }
 
      const handleCooking = (order) => {
+        order.cookedAt = new Date().toLocaleTimeString();
+        
         const newReadyItems = [...readyItems,order]
         setReadyItems(newReadyItems)
 
         const remainning = cookingItems.filter((item) => item.id !== order.id)
             setCookingItems(remainning)
+
+        const remainningOrders = orders.filter((item) => item.id !== order.id)
+        setOrders(remainningOrders)
         }
 
     return (

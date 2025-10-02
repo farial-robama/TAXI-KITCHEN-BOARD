@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import OrderContainer from './components/OrderContainer'
 import TitleSection from './components/TitleSection'
+import { ToastContainer } from 'react-toastify';
 
 const loadOrders = () => fetch("/orders.json").then((res) => res.json());
 
@@ -28,6 +29,19 @@ function App() {
         <OrderContainer ordersPromise={ordersPromise}></OrderContainer>
       </Suspense>
     </section>
+
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
        
     </>
   )
